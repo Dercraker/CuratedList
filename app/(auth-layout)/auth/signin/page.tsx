@@ -1,3 +1,4 @@
+import { SignInCard } from '@/src/components/auth/signIn/signInCard';
 import { auth } from '@/src/lib/auth/helper';
 import { LINKS } from '@/src/utils/NavigationLinks';
 import { redirect } from 'next/navigation';
@@ -7,7 +8,7 @@ const RoutePage = async () => {
 
   if (user) redirect(LINKS.Landing.href);
 
-  return <>toto</>;
+  return <SignInCard />;
 };
 
 export default RoutePage;

@@ -1,4 +1,4 @@
-import { SiteName } from '@/components/header/siteName';
+import { SiteName } from '@/src/components/header/siteName';
 
 export const AuthNavbar = () => {
   return (

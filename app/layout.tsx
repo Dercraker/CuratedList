@@ -19,9 +19,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="h-full" suppressHydrationWarning>
+    <html lang="en" className="h-screen " suppressHydrationWarning>
       <body className={roboto.className}>
-        <Providers>{children}</Providers>
+        <Providers>
+          <div className="bg-orange-600">{children}</div>
+        </Providers>
       </body>
     </html>
   );

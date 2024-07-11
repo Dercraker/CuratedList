@@ -8,7 +8,11 @@ const RoutePage = async () => {
 
   if (user) redirect(LINKS.Landing.href);
 
-  return <SignInCard />;
+  return (
+    <div className="top-1/3 absolute flex flex-col flex-1 justify-center items-center w-full">
+      <SignInCard />
+    </div>
+  );
 };
 
 export default RoutePage;

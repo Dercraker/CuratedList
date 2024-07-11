@@ -5,14 +5,14 @@ import { Button } from '@/src/components/ui/button';
 import { Divider } from '@/src/components/ui/divider';
 import { Skeleton } from '@/src/components/ui/skeleton';
 import { Typography } from '@/src/components/ui/typography';
+import { LINKS } from '@/src/utils/NavigationLinks';
+import { getServerUrl } from '@/src/utils/server-url';
 import { ReloadIcon } from '@radix-ui/react-icons';
 import { useQuery } from '@tanstack/react-query';
 import { AlertTriangle } from 'lucide-react';
 import Link from 'next/link';
-import { ProviderButton } from './providerButton';
 import { parseAsString, useQueryState } from 'nuqs';
-import { getServerUrl } from '@/src/utils/server-url';
-import { LINKS } from '@/src/utils/NavigationLinks';
+import { ProviderButton } from './providerButton';
 
 export type SignInProvidersProps = {};
 

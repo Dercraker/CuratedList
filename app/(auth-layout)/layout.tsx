@@ -5,7 +5,7 @@ const RouteLayout = ({ children }: PropsWithChildren) => {
   return (
     <>
       <AuthNavbar />
-      {children}
+      <div className="w-full h-screen">{children}</div>
     </>
   );
 };

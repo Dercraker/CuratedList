@@ -23,7 +23,7 @@ export const ProviderButton = ({
 
   return (
     <Button
-      className="border-gray-500 bg-white hover:bg-gray-300 text-black"
+      className="bg-gray-100 hover:bg-gray-300 text-black"
       onClick={() => oAuthSignInMutation.mutate()}
       disabled={oAuthSignInMutation.isPending}>
       {oAuthSignInMutation.isPending ? (

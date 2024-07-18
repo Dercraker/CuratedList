@@ -1,4 +1,4 @@
-import { cn } from '@/src/lib/utils';
+import { cn } from '@/lib/utils';
 import type { ComponentProps } from 'react';
 
 export type DividerProps = ComponentProps<'div'>;

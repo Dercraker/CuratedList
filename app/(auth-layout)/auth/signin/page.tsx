@@ -1,6 +1,6 @@
-import { SignInCard } from '@/src/components/auth/signIn/signInCard';
-import { auth } from '@/src/lib/auth/helper';
-import { LINKS } from '@/src/utils/NavigationLinks';
+import { SignInCard } from '@/components/auth/signIn/signInCard';
+import { auth } from '@/lib/auth/helper';
+import { LINKS } from '@/utils/NavigationLinks';
 import { redirect } from 'next/navigation';
 
 const RoutePage = async () => {

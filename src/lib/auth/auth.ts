@@ -20,7 +20,7 @@ export const {
     signOut: '/auth/signout',
     error: '/auth/error',
     verifyRequest: '/auth/verify-request',
-    newUser: '/auth/new-user',
+    // newUser: '/auth/new-user',
   },
   theme: {
     logo: 'images/logo-text.png',

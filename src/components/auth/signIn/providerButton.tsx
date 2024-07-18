@@ -1,4 +1,4 @@
-import { getServerUrl } from '@/src/utils/server-url';
+import { getServerUrl } from '@/utils/server-url';
 import { useMutation } from '@tanstack/react-query';
 import { signIn } from 'next-auth/react';
 import { GithubLogoSvg } from '../../svg/githubLogo.svg';

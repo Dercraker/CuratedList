@@ -5,7 +5,7 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
-import { cn } from '@/src/lib/utils';
+import { cn } from '@/lib/utils';
 import { ComponentPropsWithoutRef } from 'react';
 import { SignInProviders } from './signInProviders';
 

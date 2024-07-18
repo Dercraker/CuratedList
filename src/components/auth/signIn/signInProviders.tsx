@@ -1,18 +1,19 @@
 'use client';
 
-import { Alert, AlertDescription, AlertTitle } from '@/src/components/ui/alert';
-import { Button } from '@/src/components/ui/button';
-import { Divider } from '@/src/components/ui/divider';
-import { Skeleton } from '@/src/components/ui/skeleton';
-import { Typography } from '@/src/components/ui/typography';
-import { LINKS } from '@/src/utils/NavigationLinks';
-import { getServerUrl } from '@/src/utils/server-url';
+import { ProviderButton } from '@/components/auth/signIn/providerButton';
+import { SignInCredentials } from '@/components/auth/signIn/signInCredentials';
+import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
+import { Button } from '@/components/ui/button';
+import { Divider } from '@/components/ui/divider';
+import { Skeleton } from '@/components/ui/skeleton';
+import { Typography } from '@/components/ui/typography';
+import { LINKS } from '@/utils/NavigationLinks';
+import { getServerUrl } from '@/utils/server-url';
 import { ReloadIcon } from '@radix-ui/react-icons';
 import { useQuery } from '@tanstack/react-query';
 import { AlertTriangle } from 'lucide-react';
 import Link from 'next/link';
 import { parseAsString, useQueryState } from 'nuqs';
-import { ProviderButton } from './providerButton';
 
 export type SignInProvidersProps = {};
 
@@ -23,20 +24,21 @@ export const SignInProviders = ({}: SignInProvidersProps) => {
   );
 
   const { data: providers, isPending } = useQuery({
-    queryFn: () => fetch(`/api/auth/providers`).then(res => res.json()),
     queryKey: ['providers'],
+    queryFn: () => fetch(`/api/auth/providers`).then(res => res.json()),
   });
 
   if (isPending) {
     return (
       <div className="flex flex-col gap-4">
-        <Skeleton className="w-80 h-9" />
         <Button disabled>
           <ReloadIcon className="animate-spin" />
         </Button>
         <Divider>OR</Divider>
-        <Skeleton className="w-12 h-9" />
-        <Skeleton className="w-12 h-9" />
+        <div className="flex flex-row gap-2">
+          <Skeleton className="flex-1 h-9" />
+          <Skeleton className="flex-1 h-9" />
+        </div>
       </div>
     );
   }
@@ -63,10 +65,11 @@ export const SignInProviders = ({}: SignInProvidersProps) => {
 
   return (
     <div className="flex flex-col gap-4">
-      {/* <SignInCredentialsAndMagicLinkForm /> */}
+      <SignInCredentials />
+
       <Divider>or</Divider>
 
-      <div className="flex flex-col gap-2">
+      <div className="flex flex-row justify-center gap-2">
         {providers.github ? (
           <ProviderButton providerId="github" callbackUrl={callbackUrl} />
         ) : null}

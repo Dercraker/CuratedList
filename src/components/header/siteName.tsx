@@ -1,5 +1,5 @@
-import { cn } from '@/src/lib/utils';
-import { LINKS } from '@/src/utils/NavigationLinks';
+import { cn } from '@/lib/utils';
+import { LINKS } from '@/utils/NavigationLinks';
 import Link from 'next/link';
 
 type SiteNameProps = {

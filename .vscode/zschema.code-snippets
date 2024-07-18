@@ -1,0 +1,16 @@
+{
+  "Create Zod Schema": {
+    "prefix": "zschema",
+    "body": [
+      "import { z } from 'zod';",
+      "",
+      "export const $1Schema = z.object({",
+      "  $2",
+      "});",
+      "",
+      "export type $1Schema = z.infer<typeof $1Schema>;",
+      ""
+    ],
+    "description": "Create Zod Schema"
+  }
+}

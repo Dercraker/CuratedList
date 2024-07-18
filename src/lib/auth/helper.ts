@@ -1,4 +1,4 @@
-import { baseAuth } from '@/src/lib/auth/auth';
+import { baseAuth } from '@/lib/auth/auth';
 import type { User } from '@prisma/client';
 
 export class AuthError extends Error {

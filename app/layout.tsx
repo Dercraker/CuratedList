@@ -22,7 +22,7 @@ export default function RootLayout({
     <html lang="en" className="h-screen " suppressHydrationWarning>
       <body className={roboto.className}>
         <Providers>
-          <div className="bg-orange-600">{children}</div>
+          <div className="">{children}</div>
         </Providers>
       </body>
     </html>

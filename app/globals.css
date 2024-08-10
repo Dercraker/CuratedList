@@ -57,3 +57,8 @@
     @apply bg-background text-foreground;
   }
 }
+
+.parent-focus:focus-within {
+  outline: 2px solid #000;
+  outline-offset: 3px;
+}

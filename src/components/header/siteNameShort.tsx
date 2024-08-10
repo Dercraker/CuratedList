@@ -13,18 +13,17 @@ type SiteNameProps = {
   className?: string;
 };
 
-export const SiteName = ({ className }: SiteNameProps) => {
+export const SiteNameShort = ({ className }: SiteNameProps) => {
   return (
     <div
       className={cn(
-        `font-bold text-4xl  py-4 ${robotoTitle.className}`,
+        `font-bold text-4xl  py-4 mr-4 ${robotoTitle.className}`,
         className
       )}
     >
       <Link href={LINKS.Landing.href} className="select-none">
-        CuratedDev
+        {"<CD/>"}
       </Link>
     </div>
-    
   );
 };

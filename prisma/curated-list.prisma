@@ -1,0 +1,76 @@
+model Item {
+  id  String @id @default(cuid())
+  title String
+  description String
+  url String
+  createdAt DateTime? @default(now())
+  updateAt  DateTime @updatedAt
+
+  list  ItemOnList[]
+  userVotes UserOnItemVote[]
+  bookmarks UserOnItemBookmark[]
+
+  creator User @relation(fields: [id], references: [id])
+}
+
+model UserOnItemVote {
+  id  String @id @default(cuid())
+  userId String
+  ItemId String
+  createdAt DateTime @default(now())
+  updateAt  DateTime @updatedAt
+  isUpVote Boolean @default(false)
+
+  user User @relation(fields: [userId], references: [id])
+  item Item @relation(fields: [ItemId], references: [id])
+
+  @@unique([userId, ItemId])
+}
+
+model UserOnItemBookmark {
+  id  String @id @default(cuid())
+  userId String
+  ItemId String
+  createdAt DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id])
+  item Item @relation(fields: [ItemId], references: [id])
+
+  @@unique([userId, ItemId])
+}
+
+model List {
+  id  String @id @default(cuid())
+  title String
+  description String?
+  createdAt DateTime? @default(now())
+  updateAt  DateTime @updatedAt
+
+  items ItemOnList[]
+
+  Tags TagOnList[]
+}
+
+model ItemOnList {
+  id  String @id @default(cuid())
+  listId String
+  itemId String
+  createdAt DateTime @default(now())
+
+  list List @relation(fields: [listId], references: [id])
+  item Item @relation(fields: [itemId], references: [id])
+
+  @@unique([itemId])
+}
+
+model TagOnList {
+  id  String @id @default(cuid())
+  listId String
+  tagId String
+  createdAt DateTime? @default(now())
+
+  list List @relation(fields: [listId], references: [id])
+  tag Tag @relation(fields: [tagId], references: [id])
+
+  @@unique([listId, tagId])
+}

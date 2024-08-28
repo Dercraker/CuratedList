@@ -1,5 +1,5 @@
+import { Layout, LayoutContent } from "@/components/page/layout";
 import { Skeleton } from "@/components/ui/skeleton";
-import { Layout, LayoutContent } from "@/features/page/layout";
 
 export default function RouteLoading() {
   return (

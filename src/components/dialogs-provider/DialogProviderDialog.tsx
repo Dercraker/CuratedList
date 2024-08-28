@@ -10,8 +10,8 @@ import {
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogTitle,
-} from "../../components/ui/alert-dialog";
-import { Loader } from "../../components/ui/loader";
+} from "../ui/alert-dialog";
+import { Loader } from "../ui/loader";
 
 export type ConfirmationDialogProps = {
   title?: string;

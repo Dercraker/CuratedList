@@ -1,5 +1,6 @@
 "use client";
 
+import { enqueueDialog } from "@/components/dialogs-provider/DialogProvider";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -8,7 +9,6 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { enqueueDialog } from "@/features/dialogs-provider/DialogProvider";
 import { toast } from "sonner";
 import { deleteAccountAction } from "./delete-account.action";
 

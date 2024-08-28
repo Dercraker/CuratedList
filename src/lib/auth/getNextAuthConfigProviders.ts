@@ -1,10 +1,10 @@
+import { env } from "@/lib/env/server";
 import { SiteConfig } from "@/site-config";
 import MagicLinkMail from "@email/MagicLinkEmail";
 import type { NextAuthConfig } from "next-auth";
 import GitHub from "next-auth/providers/github";
 import Google from "next-auth/providers/google";
 import Resend from "next-auth/providers/resend";
-import { env } from "../env";
 import { logger } from "../logger";
 import { sendEmail } from "../mail/sendEmail";
 import { getCredentialsProvider } from "./credentials-provider";

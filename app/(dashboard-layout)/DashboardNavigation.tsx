@@ -1,24 +1,24 @@
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Button } from "@/components/ui/button";
-import { AuthButton } from "@/features/auth/AuthButton";
-import { SignInButton } from "@/features/auth/SignInButton";
-import { UserDropdown } from "@/features/auth/UserDropdown";
-import { ContactFeedbackPopover } from "@/features/contact/feedback/ContactFeedbackPopover";
-import { ContactSupportDialog } from "@/features/contact/support/ContactSupportDialog";
+import { AuthButton } from "@/components/auth/AuthButton";
+import { SignInButton } from "@/components/auth/SignInButton";
+import { UserDropdown } from "@/components/auth/UserDropdown";
 import {
   Layout,
   LayoutContent,
   LayoutHeader,
   LayoutTitle,
-} from "@/features/page/layout";
+} from "@/components/page/layout";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Button } from "@/components/ui/button";
+import { ContactFeedbackPopover } from "@/features/contact/feedback/ContactFeedbackPopover";
+import { ContactSupportDialog } from "@/features/contact/support/ContactSupportDialog";
 import { ThemeToggle } from "@/features/theme/ThemeToggle";
 import { auth } from "@/lib/auth/helper";
 import { SiteConfig } from "@/site-config";
 import Image from "next/image";
 import Link from "next/link";
 import type { PropsWithChildren } from "react";
-import { DesktopVerticalMenu } from "../../src/features/navigation/DesktopVerticalMenu";
-import { MobileDropdownMenu } from "../../src/features/navigation/MobileDropdownMenu";
+import { DesktopVerticalMenu } from "../../src/components/navigation/DesktopVerticalMenu";
+import { MobileDropdownMenu } from "../../src/components/navigation/MobileDropdownMenu";
 import { DASHBOARD_LINKS } from "./dashboard-links";
 
 export const DashboardNavigation = async (props: PropsWithChildren) => {

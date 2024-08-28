@@ -7,7 +7,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Fragment, cloneElement } from "react";
 import { DASHBOARD_LINKS } from "../../../app/(dashboard-layout)/dashboard-links";
-import type { NavigationLinkGroups } from "./navigation.type";
+import type { NavigationLinkGroups } from "../../features/navigation/navigation.type";
 
 const useCurrentPath = (links: NavigationLinkGroups[]) => {
   const currentPath = usePathname();

@@ -1,11 +1,11 @@
-import { Button } from "@/components/ui/button";
 import {
   Layout,
   LayoutActions,
   LayoutContent,
   LayoutHeader,
   LayoutTitle,
-} from "@/features/page/layout";
+} from "@/components/page/layout";
+import { Button } from "@/components/ui/button";
 import type { PageParams } from "@/types/next";
 import { DonutChart } from "./donuts-chart";
 import { UsersChart } from "./users-chart";

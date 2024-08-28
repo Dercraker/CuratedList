@@ -1,4 +1,4 @@
-import { Layout } from "@/features/page/layout";
+import { Layout } from "@/components/page/layout";
 import type { ReviewItemProps } from "./ReviewItem";
 import { ReviewItem } from "./ReviewItem";
 

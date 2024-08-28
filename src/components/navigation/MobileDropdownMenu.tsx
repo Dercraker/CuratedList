@@ -14,7 +14,7 @@ import { Menu, X } from "lucide-react";
 import Link from "next/link";
 import { Fragment, cloneElement, useState } from "react";
 import { DASHBOARD_LINKS } from "../../../app/(dashboard-layout)/dashboard-links";
-import type { NavigationLinkGroups } from "./navigation.type";
+import type { NavigationLinkGroups } from "../../features/navigation/navigation.type";
 
 export const MobileDropdownMenu = ({
   links,

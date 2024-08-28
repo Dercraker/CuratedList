@@ -1,6 +1,6 @@
 import type { ComponentPropsWithoutRef } from "react";
-import { Typography } from "../../components/ui/typography";
 import { cn } from "../../lib/utils";
+import { Typography } from "../ui/typography";
 
 export const Layout = (
   props: ComponentPropsWithoutRef<"div"> & {

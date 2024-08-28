@@ -3,7 +3,7 @@ import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { Rocket } from "lucide-react";
 import Link from "next/link";
-import { Typography } from "../../components/ui/typography";
+import { Typography } from "../ui/typography";
 import { ReviewSmall } from "./review/ReviewSmall";
 
 export const Hero = () => {

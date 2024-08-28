@@ -1,13 +1,13 @@
-import { Badge } from "@/components/ui/badge";
-import { buttonVariants } from "@/components/ui/button";
-import { Typography } from "@/components/ui/typography";
 import {
   Layout,
   LayoutContent,
   LayoutDescription,
   LayoutHeader,
   LayoutTitle,
-} from "@/features/page/layout";
+} from "@/components/page/layout";
+import { Badge } from "@/components/ui/badge";
+import { buttonVariants } from "@/components/ui/button";
+import { Typography } from "@/components/ui/typography";
 import type { PageParams } from "@/types/next";
 import { FileQuestion } from "lucide-react";
 import Link from "next/link";
@@ -55,11 +55,7 @@ export default async function RoutePage(props: PageParams<{}>) {
               },
             }}
           >
-            <Badge
-              variant={
-                activeTags?.includes(tag) ? "default" : "outline"
-              }
-            >
+            <Badge variant={activeTags?.includes(tag) ? "default" : "outline"}>
               {tag}
             </Badge>
           </Link>

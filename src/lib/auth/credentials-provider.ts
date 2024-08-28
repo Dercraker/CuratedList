@@ -4,7 +4,7 @@ import type { NextAuthConfig } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { cookies } from "next/headers";
 import type { NextRequest } from "next/server";
-import { env } from "../env";
+import { env } from "@/lib/env/server";
 import { prisma } from "../prisma";
 
 const PASSWORD_REGEX = /^(?=.*[A-Za-z])(?=.*\d).{8,}$/;

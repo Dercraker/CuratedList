@@ -1,7 +1,7 @@
 "use client";
 
+import { DialogRenderer } from "@/components/dialogs-provider/DialogProvider";
 import { Toaster } from "@/components/ui/sonner";
-import { DialogRenderer } from "@/features/dialogs-provider/DialogProvider";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { SessionProvider } from "next-auth/react";
 import { ThemeProvider } from "next-themes";

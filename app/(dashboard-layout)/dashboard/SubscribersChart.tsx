@@ -35,7 +35,10 @@ const SUBSCRIBERS: { date: string; amount: number }[] = [
 ];
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { TooltipChart, TooltipChartItem } from "@/features/chart/TooltipChart";
+import {
+  TooltipChart,
+  TooltipChartItem,
+} from "@/components/chart/TooltipChart";
 import {
   Area,
   AreaChart,

@@ -1,15 +1,15 @@
-import { Badge } from "@/components/ui/badge";
-import { buttonVariants } from "@/components/ui/button";
-import { Separator } from "@/components/ui/separator";
-import { Typography } from "@/components/ui/typography";
-import { ServerMdx } from "@/features/markdown/ServerMdx";
 import {
   Layout,
   LayoutContent,
   LayoutDescription,
   LayoutHeader,
   LayoutTitle,
-} from "@/features/page/layout";
+} from "@/components/page/layout";
+import { Badge } from "@/components/ui/badge";
+import { buttonVariants } from "@/components/ui/button";
+import { Separator } from "@/components/ui/separator";
+import { Typography } from "@/components/ui/typography";
+import { ServerMdx } from "@/features/markdown/ServerMdx";
 import { formatDate } from "@/lib/format/date";
 import { logger } from "@/lib/logger";
 import { SiteConfig } from "@/site-config";

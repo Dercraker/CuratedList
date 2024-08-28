@@ -1,4 +1,4 @@
-import { useNextTopLoaderStore } from "@/features/page/NextTopLoader";
+import { useNextTopLoaderStore } from "@/components/page/NextTopLoader";
 import { useEffect } from "react";
 
 // Comment : https://github.com/vercel/next.js/discussions/9662#discussioncomment-8819562

@@ -1,5 +1,6 @@
 "use client";
 
+import { LoadingButton } from "@/components/form/SubmitButton";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import {
   Form,
@@ -10,14 +11,15 @@ import {
   useZodForm,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { LoadingButton } from "@/features/form/SubmitButton";
+import { addEmailAction } from "@/features/email/email.action";
+import {
+  EmailActionSchema,
+  EmailActionSchemaType,
+} from "@/features/email/email.schema";
 import { useMutation } from "@tanstack/react-query";
 import { AnimatePresence, motion } from "framer-motion";
 import { AlertCircle, CheckCircle } from "lucide-react";
 import { usePlausible } from "next-plausible";
-import { addEmailAction } from "./email.action";
-import type { EmailActionSchemaType } from "./email.schema";
-import { EmailActionSchema } from "./email.schema";
 
 export type EmailFormProps = {
   submitButtonLabel?: string;

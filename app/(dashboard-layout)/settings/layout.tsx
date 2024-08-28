@@ -1,11 +1,11 @@
-import { SettingsNavigation } from "@/features/layout/SettingsNavigation";
+import { SettingsNavigation } from "@/components/layout/SettingsNavigation";
 import {
   Layout,
   LayoutContent,
   LayoutDescription,
   LayoutHeader,
   LayoutTitle,
-} from "@/features/page/layout";
+} from "@/components/page/layout";
 import type { LayoutParams } from "@/types/next";
 
 export default async function RouteLayout(

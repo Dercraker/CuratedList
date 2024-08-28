@@ -1,5 +1,5 @@
-import { Footer } from "@/features/layout/Footer";
-import { Header } from "@/features/layout/Header";
+import { Footer } from "@/components/layout/Footer";
+import { Header } from "@/components/layout/Header";
 import type { PropsWithChildren } from "react";
 
 export default function RouteLayout(props: PropsWithChildren) {

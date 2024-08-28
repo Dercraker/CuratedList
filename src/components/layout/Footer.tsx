@@ -1,5 +1,5 @@
+import { Layout, LayoutContent } from "@/components/page/layout";
 import { Typography } from "@/components/ui/typography";
-import { Layout, LayoutContent } from "@/features/page/layout";
 import { SiteConfig } from "@/site-config";
 import Link from "next/link";
 import { Maker } from "../maker/Maker";

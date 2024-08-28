@@ -20,15 +20,17 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { contactSupportAction } from "@/features/contact/feedback/contact-feedback.action";
+import {
+  ContactSupportSchema,
+  ContactSupportSchemaType,
+} from "@/features/contact/support/contact-support.schema";
 import { SiteConfig } from "@/site-config";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
 import type { PropsWithChildren } from "react";
 import { useState } from "react";
 import { toast } from "sonner";
-import { contactSupportAction } from "./contact-support.action";
-import type { ContactSupportSchemaType } from "./contact-support.schema";
-import { ContactSupportSchema } from "./contact-support.schema";
 
 export type ContactSupportDialogProps = PropsWithChildren<{}>;
 

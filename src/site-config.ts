@@ -1,6 +1,6 @@
 export const SiteConfig = {
   title: "Curated-List",
-  description: "A template description for Now.ts",
+  description: "Share you're best curated-list of anything",
   prodUrl: "https://curated-list.dercraker.fr",
   domain: "curated-list.dercraker.fr",
   appIcon: "/images/icon.png",

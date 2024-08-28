@@ -1,11 +1,10 @@
 "use client";
 
+import { Button, ButtonProps } from "@/components/ui/button";
+import { buyButtonAction } from "@/features/stripe/buy-button.action";
 import { useMutation } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
-import type { ButtonProps } from "../../components/ui/button";
-import { Button } from "../../components/ui/button";
-import { buyButtonAction } from "./buy-button.action";
 
 export type BuyButtonProps = {
   priceId: string;

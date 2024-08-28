@@ -1,10 +1,10 @@
 "use client";
 
+import { BuyButton } from "@/components/stripe/BuyButton";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardFooter, CardHeader } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { Typography } from "@/components/ui/typography";
-import { BuyButton } from "@/features/stripe/BuyButton";
 import { cn } from "@/lib/utils";
 import { Check } from "lucide-react";
 

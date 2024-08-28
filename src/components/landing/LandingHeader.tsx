@@ -4,8 +4,8 @@ import { LogoSvg } from "@/components/svg/LogoSvg";
 import { SiteConfig } from "@/site-config";
 import { motion, useMotionValue, useScroll, useTransform } from "framer-motion";
 import { useEffect } from "react";
+import { ThemeToggle } from "../../features/theme/ThemeToggle";
 import { AuthButtonClient } from "../auth/AuthButtonClient";
-import { ThemeToggle } from "../theme/ThemeToggle";
 
 function useBoundedScroll(threshold: number) {
   const { scrollY } = useScroll();

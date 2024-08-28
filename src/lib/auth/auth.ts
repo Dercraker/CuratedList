@@ -3,7 +3,7 @@ import { PrismaAdapter } from "@auth/prisma-adapter";
 import type { User } from "@prisma/client";
 import type { Session } from "next-auth";
 import NextAuth from "next-auth";
-import { env } from "../env";
+import { env } from "@/lib/env/server";
 import { prisma } from "../prisma";
 import { setupResendCustomer, setupStripeCustomer } from "./auth-config-setup";
 import { getNextAuthConfigProviders } from "./getNextAuthConfigProviders";

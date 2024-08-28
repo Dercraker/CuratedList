@@ -1,7 +1,7 @@
 "use client";
 
+import { SignInButton } from "@/components/auth/SignInButton";
 import { Card, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { SignInButton } from "@/features/auth/SignInButton";
 import { logger } from "@/lib/logger";
 import type { ErrorParams } from "@/types/next";
 import { useEffect } from "react";

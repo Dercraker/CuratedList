@@ -1,25 +1,25 @@
-import { EmailFormSection } from "@/features/email/EmailFormSection";
-import { BentoGridSection } from "@/features/landing/BentoSection";
-import { FAQSection } from "@/features/landing/FAQSection";
-import { FeaturesSection } from "@/features/landing/FeatureSection";
-import { Hero } from "@/features/landing/Hero";
-import { LandingHeader } from "@/features/landing/LandingHeader";
-import { PainSection } from "@/features/landing/Pain";
-import { SectionDivider } from "@/features/landing/SectionDivider";
-import { StatsSection } from "@/features/landing/StatsSection";
-import { CTASectionCard } from "@/features/landing/cta/CTACardSection";
-import { CTAImageSection } from "@/features/landing/cta/CTAImageSection";
-import { CtaSection } from "@/features/landing/cta/CTASection";
-import { Pricing } from "@/features/landing/pricing/PricingSection";
-import { ReviewGrid } from "@/features/landing/review/ReviewGrid";
-import { ReviewSingle } from "@/features/landing/review/ReviewSingle";
-import { ReviewTriple } from "@/features/landing/review/ReviewTriple";
-import { Footer } from "@/features/layout/Footer";
+import { EmailFormSection } from "@/components/email/EmailFormSection";
+import { BentoGridSection } from "@/components/landing/BentoSection";
+import { CTASectionCard } from "@/components/landing/cta/CTACardSection";
+import { CTAImageSection } from "@/components/landing/cta/CTAImageSection";
+import { CtaSection } from "@/components/landing/cta/CTASection";
+import { FAQSection } from "@/components/landing/FAQSection";
+import { FeaturesSection } from "@/components/landing/FeatureSection";
+import { Hero } from "@/components/landing/Hero";
+import { LandingHeader } from "@/components/landing/LandingHeader";
+import { PainSection } from "@/components/landing/Pain";
+import { Pricing } from "@/components/landing/pricing/PricingSection";
+import { ReviewGrid } from "@/components/landing/review/ReviewGrid";
+import { ReviewSingle } from "@/components/landing/review/ReviewSingle";
+import { ReviewTriple } from "@/components/landing/review/ReviewTriple";
+import { SectionDivider } from "@/components/landing/SectionDivider";
+import { StatsSection } from "@/components/landing/StatsSection";
+import { Footer } from "@/components/layout/Footer";
 import Image from "next/image";
 
 const HomePage = () => {
   const bonjour = "";
-  console.log("🚀 ~ HomePage ~ bonjour:", bonjour)
+  console.log("🚀 ~ HomePage ~ bonjour:", bonjour);
 
   return (
     <div className="relative flex h-fit flex-col bg-background text-foreground">

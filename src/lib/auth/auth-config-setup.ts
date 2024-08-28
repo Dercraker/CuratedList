@@ -1,7 +1,7 @@
 import type { User } from "next-auth";
-import { env } from "../env";
-import { resend } from "../mail/resend";
-import { stripe } from "../stripe";
+import { resend } from "@/lib/mail/resend";
+import { stripe } from "@/lib/stripe";
+import { env } from "@/lib/env/server";
 
 export const setupStripeCustomer = async (user: User) => {
   if (!user.email) {

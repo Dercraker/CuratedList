@@ -1,3 +1,4 @@
+import { LoadingButton } from "@/components/form/SubmitButton";
 import {
   Form,
   FormControl,
@@ -7,7 +8,6 @@ import {
   useZodForm,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { LoadingButton } from "@/features/form/SubmitButton";
 import { getServerUrl } from "@/lib/server-url";
 import { useMutation } from "@tanstack/react-query";
 import { signIn } from "next-auth/react";

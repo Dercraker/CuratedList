@@ -10,33 +10,34 @@ model Item {
   userVotes UserOnItemVote[]
   bookmarks UserOnItemBookmark[]
 
+  creatorId String
   creator User @relation(fields: [id], references: [id])
 }
 
 model UserOnItemVote {
   id  String @id @default(cuid())
   userId String
-  ItemId String
+  itemId String
   createdAt DateTime @default(now())
   updateAt  DateTime @updatedAt
   isUpVote Boolean @default(false)
 
   user User @relation(fields: [userId], references: [id])
-  item Item @relation(fields: [ItemId], references: [id])
+  item Item @relation(fields: [itemId], references: [id])
 
-  @@unique([userId, ItemId])
+  @@unique([userId, itemId])
 }
 
 model UserOnItemBookmark {
   id  String @id @default(cuid())
   userId String
-  ItemId String
+  itemId String
   createdAt DateTime @default(now())
 
   user User @relation(fields: [userId], references: [id])
-  item Item @relation(fields: [ItemId], references: [id])
+  item Item @relation(fields: [itemId], references: [id])
 
-  @@unique([userId, ItemId])
+  @@unique([userId, itemId])
 }
 
 model List {
@@ -45,6 +46,9 @@ model List {
   description String?
   createdAt DateTime? @default(now())
   updateAt  DateTime @updatedAt
+
+  creatorId String
+  creator User @relation(fields: [creatorId], references: [id])
 
   items ItemOnList[]
 

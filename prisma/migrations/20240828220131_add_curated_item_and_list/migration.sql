@@ -20,6 +20,7 @@ CREATE TABLE "Item" (
     "url" TEXT NOT NULL,
     "createdAt" TIMESTAMP(3) DEFAULT CURRENT_TIMESTAMP,
     "updateAt" TIMESTAMP(3) NOT NULL,
+    "creatorId" TEXT NOT NULL,
 
     CONSTRAINT "Item_pkey" PRIMARY KEY ("id")
 );
@@ -28,7 +29,7 @@ CREATE TABLE "Item" (
 CREATE TABLE "UserOnItemVote" (
     "id" TEXT NOT NULL,
     "userId" TEXT NOT NULL,
-    "ItemId" TEXT NOT NULL,
+    "itemId" TEXT NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updateAt" TIMESTAMP(3) NOT NULL,
     "isUpVote" BOOLEAN NOT NULL DEFAULT false,
@@ -40,7 +41,7 @@ CREATE TABLE "UserOnItemVote" (
 CREATE TABLE "UserOnItemBookmark" (
     "id" TEXT NOT NULL,
     "userId" TEXT NOT NULL,
-    "ItemId" TEXT NOT NULL,
+    "itemId" TEXT NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
     CONSTRAINT "UserOnItemBookmark_pkey" PRIMARY KEY ("id")
@@ -53,6 +54,7 @@ CREATE TABLE "List" (
     "description" TEXT,
     "createdAt" TIMESTAMP(3) DEFAULT CURRENT_TIMESTAMP,
     "updateAt" TIMESTAMP(3) NOT NULL,
+    "creatorId" TEXT NOT NULL,
 
     CONSTRAINT "List_pkey" PRIMARY KEY ("id")
 );
@@ -81,7 +83,6 @@ CREATE TABLE "TagOnList" (
 CREATE TABLE "Tag" (
     "id" TEXT NOT NULL,
     "title" TEXT NOT NULL,
-    "description" TEXT NOT NULL,
     "createdAt" TIMESTAMP(3) DEFAULT CURRENT_TIMESTAMP,
     "updateAt" TIMESTAMP(3) NOT NULL,
 
@@ -89,10 +90,10 @@ CREATE TABLE "Tag" (
 );
 
 -- CreateIndex
-CREATE UNIQUE INDEX "UserOnItemVote_userId_ItemId_key" ON "UserOnItemVote"("userId", "ItemId");
+CREATE UNIQUE INDEX "UserOnItemVote_userId_itemId_key" ON "UserOnItemVote"("userId", "itemId");
 
 -- CreateIndex
-CREATE UNIQUE INDEX "UserOnItemBookmark_userId_ItemId_key" ON "UserOnItemBookmark"("userId", "ItemId");
+CREATE UNIQUE INDEX "UserOnItemBookmark_userId_itemId_key" ON "UserOnItemBookmark"("userId", "itemId");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "ItemOnList_itemId_key" ON "ItemOnList"("itemId");
@@ -107,13 +108,16 @@ ALTER TABLE "Item" ADD CONSTRAINT "Item_id_fkey" FOREIGN KEY ("id") REFERENCES "
 ALTER TABLE "UserOnItemVote" ADD CONSTRAINT "UserOnItemVote_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "UserOnItemVote" ADD CONSTRAINT "UserOnItemVote_ItemId_fkey" FOREIGN KEY ("ItemId") REFERENCES "Item"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "UserOnItemVote" ADD CONSTRAINT "UserOnItemVote_itemId_fkey" FOREIGN KEY ("itemId") REFERENCES "Item"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "UserOnItemBookmark" ADD CONSTRAINT "UserOnItemBookmark_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "UserOnItemBookmark" ADD CONSTRAINT "UserOnItemBookmark_ItemId_fkey" FOREIGN KEY ("ItemId") REFERENCES "Item"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "UserOnItemBookmark" ADD CONSTRAINT "UserOnItemBookmark_itemId_fkey" FOREIGN KEY ("itemId") REFERENCES "Item"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "List" ADD CONSTRAINT "List_creatorId_fkey" FOREIGN KEY ("creatorId") REFERENCES "User"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "ItemOnList" ADD CONSTRAINT "ItemOnList_listId_fkey" FOREIGN KEY ("listId") REFERENCES "List"("id") ON DELETE RESTRICT ON UPDATE CASCADE;

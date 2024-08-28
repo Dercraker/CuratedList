@@ -14,7 +14,8 @@
     "stripe-webhooks": "stripe listen --forward-to localhost:3000/api/webhooks/stripe",
     "vercel-build": "prisma generate && prisma migrate deploy && next build",
     "postinstall": "prisma generate",
-    "clean": "next lint --fix && tsc --noEmit && prettier --write ."
+    "clean": "next lint --fix && tsc --noEmit && prettier --write .",
+    "seed": "prisma db seed"
   },
   "dependencies": {
     "@auth/prisma-adapter": "^2.4.1",
@@ -112,6 +113,7 @@
     "prettier": "^3.3.3",
     "prisma": "^5.17.0",
     "tailwindcss": "^3.4.6",
+    "ts-node": "^10.9.2",
     "typescript": "^5.5.4",
     "typescript-eslint": "^7.17.0",
     "unified": "^11.0.5"

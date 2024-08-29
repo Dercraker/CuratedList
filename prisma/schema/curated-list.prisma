@@ -7,39 +7,12 @@ model Item {
   updateAt  DateTime @updatedAt
 
   list  ItemOnList[]
-  userVotes UserOnItemVote[]
-  bookmarks UserOnItemBookmark[]
+  userVotes VoteOnItem[]
+  bookmarks ItemBookmark[]
 
-  creatorId String
-  creator User @relation(fields: [id], references: [id])
+  creatorId String?
+  creator User? @relation(fields: [creatorId], references: [id], onDelete: SetNull)
 }
-
-model UserOnItemVote {
-  id  String @id @default(cuid())
-  userId String
-  itemId String
-  createdAt DateTime @default(now())
-  updateAt  DateTime @updatedAt
-  isUpVote Boolean @default(false)
-
-  user User @relation(fields: [userId], references: [id])
-  item Item @relation(fields: [itemId], references: [id])
-
-  @@unique([userId, itemId])
-}
-
-model UserOnItemBookmark {
-  id  String @id @default(cuid())
-  userId String
-  itemId String
-  createdAt DateTime @default(now())
-
-  user User @relation(fields: [userId], references: [id])
-  item Item @relation(fields: [itemId], references: [id])
-
-  @@unique([userId, itemId])
-}
-
 model List {
   id  String @id @default(cuid())
   title String
@@ -47,12 +20,38 @@ model List {
   createdAt DateTime? @default(now())
   updateAt  DateTime @updatedAt
 
-  creatorId String
-  creator User @relation(fields: [creatorId], references: [id])
+  creatorId String?
+  creator User? @relation(fields: [creatorId], references: [id], onDelete: SetNull)
 
   items ItemOnList[]
 
   Tags TagOnList[]
+
+  userBookmarks ListBookmark[]
+}
+
+model Tag {
+  id  String @id @default(cuid())
+  title String
+  createdAt DateTime? @default(now())
+  updateAt  DateTime @updatedAt
+
+  lists TagOnList[]
+
+  creatorId String?
+  creator User? @relation(fields: [creatorId], references: [id], onDelete: SetNull)
+}
+
+model ListBookmark {
+  id  String @id @default(cuid())
+  listId String
+  userId String
+
+  createdAt DateTime? @default(now())
+  updateAt DateTime @updatedAt
+
+  list List @relation(fields: [listId], references: [id])
+  user User @relation(fields: [userId], references: [id])
 }
 
 model ItemOnList {
@@ -64,9 +63,7 @@ model ItemOnList {
   list List @relation(fields: [listId], references: [id])
   item Item @relation(fields: [itemId], references: [id])
 
-  @@unique([itemId])
 }
-
 model TagOnList {
   id  String @id @default(cuid())
   listId String
@@ -75,6 +72,27 @@ model TagOnList {
 
   list List @relation(fields: [listId], references: [id])
   tag Tag @relation(fields: [tagId], references: [id])
+}
 
-  @@unique([listId, tagId])
+model VoteOnItem {
+  id  String @id @default(cuid())
+  userId String
+  itemId String
+
+  createdAt DateTime @default(now())
+  updateAt  DateTime @updatedAt
+  isUpVote Boolean @default(false)
+
+  user User @relation(fields: [userId], references: [id])
+  item Item @relation(fields: [itemId], references: [id])
+}
+
+model ItemBookmark {
+  id  String @id @default(cuid())
+  userId String
+  itemId String
+  createdAt DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id])
+  item Item @relation(fields: [itemId], references: [id])
 }

@@ -23,11 +23,12 @@ model User {
   accounts      Account[]
   feedbacks     Feedback[]
 
-  Lists List[]
+  lists List[]
+  listsBookmark ListBookmark[]
 
   items Item[]
-  itemsBookmarks UserOnItemBookmark[]
-  votes UserOnItemVote[]
+  itemsBookmark ItemBookmark[]
+  votes VoteOnItem[]
 
   tags Tag[]
 
@@ -45,17 +46,6 @@ model Feedback {
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-}
-
-model Tag {
-  id  String @id @default(cuid())
-  title String
-  createdAt DateTime? @default(now())
-  updateAt  DateTime @updatedAt
-
-  lists TagOnList[]
-
-  creator User @relation(fields: [id], references: [id])
 }
 
 enum UserPlan {

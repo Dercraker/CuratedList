@@ -22,6 +22,7 @@ export const ListContainer = ({ className, ...props }: ListContainerProps) => {
     hasNextPage,
     fetchNextPage,
     isFetching,
+    isPending,
   } = useInfiniteQuery({
     queryKey: KeyListFactory.infinity,
     queryFn: async ({ pageParam }) => {
@@ -49,6 +50,8 @@ export const ListContainer = ({ className, ...props }: ListContainerProps) => {
   useEffect(() => {
     if (inView && hasNextPage) fetchNextPage();
   }, [inView, fetchNextPage, hasNextPage]);
+
+  if (isPending) return <ListContainerLoader count={18} />;
 
   return (
     <>

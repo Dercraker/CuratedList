@@ -1,3 +1,4 @@
+import { ContactSupportDialog } from "@/components/contact/support/ContactSupportDialog";
 import {
   Card,
   CardContent,
@@ -6,9 +7,8 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { ContactSupportDialog } from "@/features/contact/support/ContactSupportDialog";
 import { requiredAuth } from "@/lib/auth/helper";
-import { env } from "@/lib/env";
+import { env } from "@/lib/env/server";
 import { resend } from "@/lib/mail/resend";
 import { ToggleEmailCheckbox } from "./ToggleEmailCheckbox";
 

@@ -64,6 +64,7 @@
     "next-plausible": "^3.12.0",
     "next-safe-action": "^7.4.2",
     "next-themes": "^0.3.0",
+    "nowts": "link:",
     "nprogress": "^0.2.0",
     "nuqs": "^1.17.5",
     "react": "^18.3.1",

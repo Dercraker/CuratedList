@@ -11,7 +11,6 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { InlineTooltip } from "@/components/ui/tooltip";
-import { SubmitButton } from "@/features/form/SubmitButton";
 import type { User } from "@prisma/client";
 import { useMutation } from "@tanstack/react-query";
 import { BadgeCheck } from "lucide-react";
@@ -21,6 +20,7 @@ import { createVerifyEmailAction } from "../verify-email/verify-email.action";
 import { updateProfileAction } from "./edit-profile.action";
 import type { ProfileFormType } from "./edit-profile.schema";
 import { ProfileFormSchema } from "./edit-profile.schema";
+import { SubmitButton } from "@/components/form/SubmitButton";
 
 type EditProfileFormProps = {
   defaultValues: User;

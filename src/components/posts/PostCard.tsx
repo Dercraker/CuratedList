@@ -6,8 +6,8 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { Post } from "@/features/posts/post-manager";
 import Link from "next/link";
-import type { Post } from "./post-manager";
 
 type PostCardProps = {
   post: Post;

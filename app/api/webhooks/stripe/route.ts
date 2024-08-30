@@ -1,4 +1,3 @@
-import { env } from "@/lib/env";
 import { logger } from "@/lib/logger";
 import { stripe } from "@/lib/stripe";
 import { headers } from "next/dist/client/components/headers";
@@ -14,6 +13,7 @@ import {
   notifyUserOfPremiumUpgrade,
   upgradeUserToPlan,
 } from "./premium.helper";
+import { env } from "@/lib/env/server";
 
 /**
  * Stripe Webhooks

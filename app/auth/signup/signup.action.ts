@@ -9,9 +9,9 @@ import {
   validatePassword,
 } from "@/lib/auth/credentials-provider";
 import { ActionError, action } from "@/lib/backend/safe-actions";
-import { env } from "@/lib/env";
 import { prisma } from "@/lib/prisma";
 import { LoginCredentialsFormScheme } from "./signup.schema";
+import { env } from "@/lib/env/server";
 
 export const signUpAction = action
   .schema(LoginCredentialsFormScheme)

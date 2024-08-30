@@ -9,8 +9,6 @@ import {
 } from "@/components/page/layout";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
-import { ContactFeedbackPopover } from "@/features/contact/feedback/ContactFeedbackPopover";
-import { ContactSupportDialog } from "@/features/contact/support/ContactSupportDialog";
 import { ThemeToggle } from "@/features/theme/ThemeToggle";
 import { auth } from "@/lib/auth/helper";
 import { SiteConfig } from "@/site-config";
@@ -20,6 +18,8 @@ import type { PropsWithChildren } from "react";
 import { DesktopVerticalMenu } from "../../src/components/navigation/DesktopVerticalMenu";
 import { MobileDropdownMenu } from "../../src/components/navigation/MobileDropdownMenu";
 import { DASHBOARD_LINKS } from "./dashboard-links";
+import { ContactFeedbackPopover } from "@/components/contact/feedback/ContactFeedbackPopover";
+import { ContactSupportDialog } from "@/components/contact/support/ContactSupportDialog";
 
 export const DashboardNavigation = async (props: PropsWithChildren) => {
   const user = await auth();

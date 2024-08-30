@@ -15,7 +15,6 @@ import {
   useZodForm,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { FormUnsavedBar } from "@/features/form/FormUnsavedBar";
 import { useMutation } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
@@ -24,6 +23,7 @@ import {
   SettingsDetailsFormSchema,
   type SettingsDetailsFormType,
 } from "./settings.schema";
+import { FormUnsavedBar } from "@/components/form/FormUnsavedBar";
 
 type ProductFormProps = {
   defaultValues: SettingsDetailsFormType;

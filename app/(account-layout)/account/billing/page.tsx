@@ -1,3 +1,4 @@
+import { ContactSupportDialog } from "@/components/contact/support/ContactSupportDialog";
 import { buttonVariants } from "@/components/ui/button";
 import {
   Card,
@@ -8,7 +9,6 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Typography } from "@/components/ui/typography";
-import { ContactSupportDialog } from "@/features/contact/support/ContactSupportDialog";
 import { requiredAuth } from "@/lib/auth/helper";
 import { getServerUrl } from "@/lib/server-url";
 import { stripe } from "@/lib/stripe";

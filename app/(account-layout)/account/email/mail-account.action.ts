@@ -1,7 +1,7 @@
 "use server";
 
 import { ActionError, authAction } from "@/lib/backend/safe-actions";
-import { env } from "@/lib/env";
+import { env } from "@/lib/env/server";
 import { resend } from "@/lib/mail/resend";
 import { z } from "zod";
 

@@ -11,11 +11,11 @@ import { Typography } from "@/components/ui/typography";
 import type { PageParams } from "@/types/next";
 import { FileQuestion } from "lucide-react";
 import Link from "next/link";
-import { PostCard } from "../../../src/features/posts/PostCard";
 import {
   getPosts,
   getPostsTags,
 } from "../../../src/features/posts/post-manager";
+import { PostCard } from "@/components/posts/PostCard";
 
 const getTags = (
   params: string | string[] | undefined,

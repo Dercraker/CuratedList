@@ -16,8 +16,13 @@ model User {
   image           String?
   // Resend email
   resendContactId String?
+  // stripe user Id
+  stripeCustomerId String?
   // For the Credentials provider
   passwordHash    String?
+
+  plan            UserPlan @default(FREE)
+
 
   sessions      Session[]
   accounts      Account[]

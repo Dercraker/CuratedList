@@ -13,10 +13,10 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { ContactSupportDialog } from "@/features/contact/support/ContactSupportDialog";
 import type { PageParams } from "@/types/next";
 import Link from "next/link";
 import { getError } from "./auth-error-mapping";
+import { ContactSupportDialog } from "@/components/contact/support/ContactSupportDialog";
 
 export default async function AuthErrorPage(props: PageParams<{}>) {
   const { errorMessage, error } = getError(props.searchParams.error);

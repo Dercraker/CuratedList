@@ -18,15 +18,17 @@ import {
 } from "@/components/ui/popover";
 import { Textarea } from "@/components/ui/textarea";
 import { InlineTooltip } from "@/components/ui/tooltip";
+import { contactSupportAction } from "@/features/contact/feedback/contact-feedback.action";
+import {
+  ContactFeedbackSchema,
+  ContactFeedbackSchemaType,
+} from "@/features/contact/feedback/contact-feedback.schema";
 import { cn } from "@/lib/utils";
 import { Angry, Frown, Meh, SmilePlus } from "lucide-react";
 import { useSession } from "next-auth/react";
 import type { PropsWithChildren } from "react";
 import { useState } from "react";
 import { toast } from "sonner";
-import { contactSupportAction } from "./contact-feedback.action";
-import type { ContactFeedbackSchemaType } from "./contact-feedback.schema";
-import { ContactFeedbackSchema } from "./contact-feedback.schema";
 
 export type ContactFeedbackPopoverProps = PropsWithChildren<{}>;
 

@@ -48,9 +48,7 @@ export const getPosts = async (tags?: string[]) => {
     }
 
     if (tags) {
-      if (
-        !result.data.tags?.some((tag) => tags.includes(tag))
-      ) {
+      if (!result.data.tags?.some((tag) => tags.includes(tag))) {
         continue;
       }
     }

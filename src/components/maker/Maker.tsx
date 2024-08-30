@@ -1,4 +1,3 @@
- 
 import { Typography } from "@/components/ui/typography";
 import { SiteConfig } from "@/site-config";
 import Link from "next/link";

@@ -1,10 +1,10 @@
 "use client";
 
-import { LoadingButton } from "@/features/form/SubmitButton";
 import { useMutation } from "@tanstack/react-query";
 import { Check, X } from "lucide-react";
 import { toast } from "sonner";
 import { createVerifyEmailAction } from "./verify-email.action";
+import { LoadingButton } from "@/components/form/SubmitButton";
 
 export const VerifyEmailButton = () => {
   const mutation = useMutation({

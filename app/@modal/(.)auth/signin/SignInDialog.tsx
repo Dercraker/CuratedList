@@ -10,7 +10,7 @@ import {
 import { usePathname, useRouter } from "next/navigation";
 import { SignInProviders } from "../../../auth/signin/SignInProviders";
 
-export  function SignInDialog() {
+export function SignInDialog() {
   const router = useRouter();
   const path = usePathname();
 

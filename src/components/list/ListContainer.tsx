@@ -1,10 +1,11 @@
 "use client";
 
-import { GetPaginatedListAction } from "@/features/curated/List/getPaginatedList.action";
-import { PaginatedListItem } from "@/features/curated/List/getPaginatedList.query";
-import { KeyListFactory } from "@/features/curated/List/keyList.factory";
+import { GetListAction } from "@/features/list/getList.action";
+import { GetPaginatedListAction } from "@/features/lists/getPaginatedList.action";
+import { PaginatedListItem } from "@/features/Lists/getPaginatedList.query";
+import { KeyListFactory } from "@/features/lists/keyList.factory";
 import { cn } from "@/lib/utils";
-import { useInfiniteQuery } from "@tanstack/react-query";
+import { useInfiniteQuery, useQueryClient } from "@tanstack/react-query";
 import { useEffect, type ComponentPropsWithoutRef } from "react";
 import { useInView } from "react-intersection-observer";
 import { toast } from "sonner";
@@ -47,6 +48,7 @@ export const ListContainer = ({ className, ...props }: ListContainerProps) => {
       return nextPage;
     },
   });
+
   useEffect(() => {
     if (inView && hasNextPage) fetchNextPage();
   }, [inView, fetchNextPage, hasNextPage]);

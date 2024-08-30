@@ -3,8 +3,9 @@ model Item {
   title String
   description String
   url String
-  createdAt DateTime? @default(now())
+  createdAt DateTime @default(now())
   updateAt  DateTime @updatedAt
+  deletedAt DateTime?
 
   list  ItemOnList[]
   userVotes VoteOnItem[]
@@ -17,8 +18,9 @@ model List {
   id  String @id @default(cuid())
   title String
   description String?
-  createdAt DateTime? @default(now())
+  createdAt DateTime @default(now())
   updateAt  DateTime @updatedAt
+  deletedAt DateTime?
 
   creatorId String?
   creator User? @relation(fields: [creatorId], references: [id], onDelete: SetNull)
@@ -33,8 +35,9 @@ model List {
 model Tag {
   id  String @id @default(cuid())
   title String
-  createdAt DateTime? @default(now())
+  createdAt DateTime @default(now())
   updateAt  DateTime @updatedAt
+  deletedAt DateTime?
 
   lists TagOnList[]
 
@@ -47,7 +50,7 @@ model ListBookmark {
   listId String
   userId String
 
-  createdAt DateTime? @default(now())
+  createdAt DateTime @default(now())
   updateAt DateTime @updatedAt
 
   list List @relation(fields: [listId], references: [id])
@@ -68,7 +71,7 @@ model TagOnList {
   id  String @id @default(cuid())
   listId String
   tagId String
-  createdAt DateTime? @default(now())
+  createdAt DateTime @default(now())
 
   list List @relation(fields: [listId], references: [id])
   tag Tag @relation(fields: [tagId], references: [id])

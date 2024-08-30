@@ -17,9 +17,7 @@ export const GetPaginatedListQuery = async ({
 }: GetPaginatedListQuerySchema) => {
   const lists = await prisma.list.findMany({
     where: {
-      createdAt: {
-        not: null,
-      },
+      deletedAt: null,
     },
     take,
     skip: pageParam,

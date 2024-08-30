@@ -3,7 +3,8 @@ import type { Prisma } from "@prisma/client";
 import { z } from "zod";
 
 export const GetPaginatedListQuerySchema = z.object({
-  count: z.number(),
+  take: z.number(),
+  pageParam: z.number(),
 });
 
 export type GetPaginatedListQuerySchema = z.infer<
@@ -11,7 +12,8 @@ export type GetPaginatedListQuerySchema = z.infer<
 >;
 
 export const GetPaginatedListQuery = async ({
-  count,
+  take,
+  pageParam,
 }: GetPaginatedListQuerySchema) => {
   const lists = await prisma.list.findMany({
     where: {
@@ -19,7 +21,8 @@ export const GetPaginatedListQuery = async ({
         not: null,
       },
     },
-    take: count,
+    take,
+    skip: pageParam,
     select: {
       id: true,
       title: true,
@@ -32,6 +35,10 @@ export const GetPaginatedListQuery = async ({
         },
       },
       Tags: {
+        take: 5,
+        orderBy: {
+          createdAt: "asc",
+        },
         select: {
           tag: {
             select: {
@@ -52,10 +59,8 @@ export const GetPaginatedListQuery = async ({
   return lists;
 };
 
-export type GetPaginatedListQuery = NonNullable<
+export type PaginatedLists = NonNullable<
   Prisma.PromiseReturnType<typeof GetPaginatedListQuery>
 >;
 
-export type PaginatedListItem = GetPaginatedListQuery extends (infer U)[]
-  ? U
-  : never;
+export type PaginatedListItem = PaginatedLists extends (infer U)[] ? U : never;

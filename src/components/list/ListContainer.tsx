@@ -1,18 +1,79 @@
-import { GetPaginatedListQuery } from "@/features/curated/List/getPaginatedList";
+"use client";
+
+import { GetPaginatedListAction } from "@/features/curated/List/getPaginatedList.action";
+import { PaginatedListItem } from "@/features/curated/List/getPaginatedList.query";
+import { cn } from "@/lib/utils";
+import { useInfiniteQuery } from "@tanstack/react-query";
+import { useEffect, type ComponentPropsWithoutRef } from "react";
+import { useInView } from "react-intersection-observer";
+import { toast } from "sonner";
+import { Typography } from "../ui/typography";
 import { ListCardItem } from "./ListCardItem";
+import { ListContainerLoader } from "./ListContainer.loader";
 
-export type ListContainerProps = {};
+export type ListContainerProps = ComponentPropsWithoutRef<"div"> & {};
 
-export const ListContainer = async (props: ListContainerProps) => {
-  const lists: GetPaginatedListQuery = await GetPaginatedListQuery({
-    count: 20,
+export const ListContainer = ({ className, ...props }: ListContainerProps) => {
+  const { ref, inView } = useInView();
+  const itemPerPage = 18;
+  const {
+    data: lists,
+    hasNextPage,
+    fetchNextPage,
+    isFetching,
+  } = useInfiniteQuery({
+    queryKey: ["Curated", "List"],
+    queryFn: async ({ pageParam }) => {
+      const result = await GetPaginatedListAction({
+        pageParam,
+        itemsPerPage: itemPerPage,
+      });
+
+      if (!result || result.serverError || !result.data) {
+        toast.error("Error occurred");
+        return [] as PaginatedListItem[];
+      }
+
+      return result.data;
+    },
+    initialPageParam: 0,
+    getNextPageParam: (lastPage, allPages) => {
+      const nextPage =
+        lastPage.length === itemPerPage
+          ? allPages.length * itemPerPage
+          : undefined;
+      return nextPage;
+    },
   });
+  useEffect(() => {
+    if (inView && hasNextPage) fetchNextPage();
+  }, [inView, fetchNextPage, hasNextPage]);
 
   return (
-    <div className="flex items-center justify-center ">
-      {lists.map((list) => (
-        <ListCardItem key={list.id} list={list} />
-      ))}
-    </div>
+    <>
+      <div
+        className={cn("flex justify-center flex-wrap h-fit", className)}
+        {...props}
+      >
+        {lists?.pages?.map((page) =>
+          page.map((list: PaginatedListItem, index: number) => {
+            if (page.length == index + 1) {
+              return <ListCardItem key={list.id} list={list} innerRef={ref} />;
+            } else {
+              return <ListCardItem key={list.id} list={list} />;
+            }
+          }),
+        )}
+      </div>
+      {isFetching && hasNextPage && <ListContainerLoader count={6} />}
+      {!isFetching && !hasNextPage && (
+        <Typography
+          variant="h2"
+          className="mt-28 select-none text-center text-muted"
+        >
+          No more items to load
+        </Typography>
+      )}
+    </>
   );
 };

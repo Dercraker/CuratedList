@@ -92,6 +92,12 @@ module.exports = {
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
+      width: {
+        xl: "28rem",
+        "2xl": "32rem",
+        "3xl": "36rem",
+        "4xl": "40rem",
+      },
     },
   },
   plugins: [require("tailwindcss-animate"), require("@tailwindcss/typography")],

@@ -2,6 +2,7 @@
 
 import { GetPaginatedListAction } from "@/features/curated/List/getPaginatedList.action";
 import { PaginatedListItem } from "@/features/curated/List/getPaginatedList.query";
+import { KeyListFactory } from "@/features/curated/List/keyList.factory";
 import { cn } from "@/lib/utils";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { useEffect, type ComponentPropsWithoutRef } from "react";
@@ -22,7 +23,7 @@ export const ListContainer = ({ className, ...props }: ListContainerProps) => {
     fetchNextPage,
     isFetching,
   } = useInfiniteQuery({
-    queryKey: ["Curated", "List"],
+    queryKey: KeyListFactory.infinity,
     queryFn: async ({ pageParam }) => {
       const result = await GetPaginatedListAction({
         pageParam,

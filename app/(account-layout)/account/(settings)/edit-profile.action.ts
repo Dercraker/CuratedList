@@ -6,7 +6,7 @@ import {
 } from "@/lib/auth/credentials-provider";
 import { requiredAuth } from "@/lib/auth/helper";
 import { ActionError, authAction } from "@/lib/backend/safe-actions";
-import { env } from "@/lib/env";
+import { env } from "@/lib/env/server";
 import { prisma } from "@/lib/prisma";
 import {
   EditPasswordFormSchema,

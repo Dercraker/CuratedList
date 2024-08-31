@@ -16,14 +16,14 @@ export type ListCardItemProps = {};
 export const ListCardItemLoader = (props: ListCardItemProps) => {
   return (
     <WobbleCard>
-      <Card className="m-4 flex h-60 w-3xl select-none flex-col">
+      <Card className="m-4 flex h-60 w-80 select-none flex-col sm:w-2xl md:w-4xl lg:w-xl xl:w-3xl">
         <CardHeader>
           <CardTitle>
             <Skeleton className="h-8" />
           </CardTitle>
-          <CardDescription className="flex items-baseline justify-between ">
+          <CardDescription className="flex items-baseline justify-between max-sm:flex-col">
             <div className="flex">
-              {Array.from({ length: 5 }).map((_, idx) => (
+              {Array.from({ length: 4 }).map((_, idx) => (
                 <div
                   className="mx-1 flex items-center first:ml-0 last:mr-0"
                   key={idx}
@@ -52,10 +52,9 @@ export const ListCardItemLoader = (props: ListCardItemProps) => {
         </CardContent>
         <CardFooter className="mt-auto">
           <div className="flex items-center">
-            <User2 />
+            <User2 className="max-sm:hidden" />
             <div className="flex items-center gap-1">
-              Created by: <Skeleton className="h-4 w-32" /> -{" "}
-              <Skeleton className="h-4 w-20" />
+              Created by: <Skeleton className="h-4 w-32" />{" "}
             </div>
           </div>
         </CardFooter>

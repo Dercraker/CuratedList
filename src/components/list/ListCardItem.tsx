@@ -1,9 +1,7 @@
 "use client";
 
-import { IsListBookmarkAction } from "@/features/lists/isListBookmark.action";
-import { KeyListFactory } from "@/features/lists/keyList.factory";
+import { PaginatedListItem } from "@/features/lists/getPaginatedList.query";
 import { LINKS } from "@/features/navigation/NavigationLinks";
-import { useQuery } from "@tanstack/react-query";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
 import { DisplayCreatorName } from "../listDetail/displayCreatorName";
@@ -19,7 +17,6 @@ import {
 import { Typography } from "../ui/typography";
 import { WobbleCard } from "../ui/wobble-card";
 import { BookmarkButton } from "./ListBookmarkButton";
-import { PaginatedListItem } from "@/features/lists/getPaginatedList.query";
 
 export type ListCardItemProps = {
   list: PaginatedListItem;
@@ -34,7 +31,10 @@ export const ListCardItem = ({
 
   return (
     <WobbleCard>
-      <Card className="m-4 flex h-60 w-3xl select-none flex-col" ref={innerRef}>
+      <Card
+        className="m-4 flex h-60 w-80 select-none flex-col sm:w-2xl md:w-4xl lg:w-xl xl:w-3xl"
+        ref={innerRef}
+      >
         <CardHeader>
           <CardTitle>
             <Typography
@@ -46,7 +46,7 @@ export const ListCardItem = ({
               {title}
             </Typography>
           </CardTitle>
-          <CardDescription className="flex items-baseline justify-between ">
+          <CardDescription className="flex items-baseline justify-between max-sm:flex-col">
             <div className="flex gap-1">
               {user.status === "authenticated" && (
                 <BookmarkButton listId={id} />

@@ -17,7 +17,7 @@ export const DisplayCreatorName = ({
 }: DisplayCreatorNameProps) => {
   return (
     <div className={cn("flex items-center", className)} {...props}>
-      <User2 />
+      <User2 className="max-sm:hidden" />
       <Typography variant="small" className="flex items-center gap-1">
         Created by:{" "}
         <Typography
@@ -26,7 +26,9 @@ export const DisplayCreatorName = ({
         >
           {name ? name : "Unknown User"}
         </Typography>{" "}
-        - {format(createAt as Date, "yyyy/MM/dd")}
+        <Typography className="max-sm:hidden">
+          - {format(createAt as Date, "yyyy/MM/dd")}
+        </Typography>
       </Typography>
     </div>
   );

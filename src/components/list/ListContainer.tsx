@@ -1,11 +1,10 @@
 "use client";
 
-import { GetListAction } from "@/features/list/getList.action";
 import { GetPaginatedListAction } from "@/features/lists/getPaginatedList.action";
-import { PaginatedListItem } from "@/features/Lists/getPaginatedList.query";
+import { PaginatedListItem } from "@/features/lists/getPaginatedList.query";
 import { KeyListFactory } from "@/features/lists/keyList.factory";
 import { cn } from "@/lib/utils";
-import { useInfiniteQuery, useQueryClient } from "@tanstack/react-query";
+import { useInfiniteQuery } from "@tanstack/react-query";
 import { useEffect, type ComponentPropsWithoutRef } from "react";
 import { useInView } from "react-intersection-observer";
 import { toast } from "sonner";

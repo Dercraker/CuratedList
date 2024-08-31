@@ -68,6 +68,8 @@
     "nowts": "link:",
     "nprogress": "^0.2.0",
     "nuqs": "^1.17.5",
+    "open-graph-scraper": "^6.8.1",
+    "open-graph-scraper-lite": "^2.1.0",
     "react": "^18.3.1",
     "react-day-picker": "^8.10.1",
     "react-dom": "^18.3.1",

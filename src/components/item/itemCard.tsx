@@ -8,6 +8,7 @@ import {
   CardHeader,
   CardTitle,
 } from "../ui/card";
+import { DisplayOG } from "./DisplayOG";
 import { VoteCounter } from "./voteCounter";
 
 export type ItemCardProps = {
@@ -18,13 +19,20 @@ export const ItemCard = ({
   item: { description, id, title, url, userVotes },
 }: ItemCardProps) => {
   return (
-    <Card className={cn("m-5 w-full lg:basis-2/5")}>
+    <Card
+      className={cn(
+        "m-5 w-full h-[21rem] lg:h-[24rem] sm:w-3xl lg:basis-2/5 flex flex-col justify-between",
+      )}
+    >
       <CardHeader>
-        <CardTitle className="select-none">{title}</CardTitle>
-        <CardDescription className="select-none">{description}</CardDescription>
+        <CardTitle className="line-clamp-2 select-none">{title}</CardTitle>
+        <CardDescription className="line-clamp-3 select-none">
+          {description}
+        </CardDescription>
       </CardHeader>
 
-      <CardContent>
+      <CardContent className="flex items-center gap-4 max-sm:mr-9">
+        <DisplayOG url="https://tailwindcss.com" />
         <VoteCounter
           className="ml-auto"
           userVotes={UserVotesSchema.parse(userVotes)}

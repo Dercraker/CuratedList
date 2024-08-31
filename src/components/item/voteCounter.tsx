@@ -16,11 +16,11 @@ export const VoteCounter = ({ userVotes, className }: VoteCounterProps) => {
 
   return (
     <div className={cn("flex w-fit flex-col items-center", className)}>
-      <ArrowUpCircle />
+      <ArrowUpCircle className="cursor-pointer hover:text-primary" />
       <Typography className="select-none">
         {voteResult > 0 ? `+${voteResult}` : voteResult}
       </Typography>
-      <ArrowDownCircle />
+      <ArrowDownCircle className="cursor-pointer hover:text-red-400" />
     </div>
   );
 };

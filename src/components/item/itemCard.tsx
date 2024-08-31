@@ -1,6 +1,7 @@
 import { ItemSchema } from "@/features/item/itemSchema";
 import { UserVotesSchema } from "@/features/vote/userVote.schema";
 import { cn } from "@/lib/utils";
+import Link from "next/link";
 import { Suspense } from "react";
 import {
   Card,
@@ -9,6 +10,7 @@ import {
   CardHeader,
   CardTitle,
 } from "../ui/card";
+import { Typography } from "../ui/typography";
 import { DisplayOG } from "./DisplayOG";
 import { DisplayOGLoader } from "./DisplayOG.loader";
 import { VoteCounter } from "./voteCounter";
@@ -18,7 +20,7 @@ export type ItemCardProps = {
 };
 
 export const ItemCard = ({
-  item: { description, id, title, url, userVotes },
+  item: { description, id, title, url },
 }: ItemCardProps) => {
   return (
     <Card
@@ -27,7 +29,15 @@ export const ItemCard = ({
       )}
     >
       <CardHeader>
-        <CardTitle className="line-clamp-2 select-none">{title}</CardTitle>
+        <CardTitle>
+          <Typography
+            className="line-clamp-2 cursor-pointer select-none hover:underline"
+            as={Link}
+            href={url}
+          >
+            {title}
+          </Typography>
+        </CardTitle>
         <CardDescription className="line-clamp-3 select-none">
           {description}
         </CardDescription>
@@ -36,10 +46,7 @@ export const ItemCard = ({
       <CardContent className="flex items-center gap-4 max-sm:mr-9">
         <Suspense fallback={<DisplayOGLoader />}>
           <DisplayOG url="https://tailwindcss.com" />
-          <VoteCounter
-            className="ml-auto"
-            userVotes={UserVotesSchema.parse(userVotes)}
-          />
+          <VoteCounter itemId={id} className="ml-auto" />
         </Suspense>
       </CardContent>
     </Card>

@@ -38,14 +38,6 @@ export const GetListQuery = async ({ listId }: GetListQuerySchema) => {
           title: true,
           description: true,
           url: true,
-          userVotes: {
-            select: {
-              id: true,
-              itemId: true,
-              userId: true,
-              isUpVote: true,
-            },
-          },
         },
       },
     },

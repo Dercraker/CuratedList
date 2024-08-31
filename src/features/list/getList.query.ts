@@ -41,6 +41,7 @@ export const GetListQuery = async ({ listId }: GetListQuerySchema) => {
           userVotes: {
             select: {
               id: true,
+              itemId: true,
               userId: true,
               isUpVote: true,
             },

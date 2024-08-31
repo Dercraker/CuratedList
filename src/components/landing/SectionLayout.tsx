@@ -8,7 +8,7 @@ export type SectionLayoutProps = {
    * base = 1024px
    * lg = 1152px
    */
-  size?: "sm" | "base" | "lg" | "full";
+  size?: "sm" | "base" | "lg" | "xl" | "full";
   /**
    * The variant of the section.
    * default = default background and foreground
@@ -54,6 +54,7 @@ export const SectionLayout = ({
             "max-w-4xl": size === "sm",
             "max-w-5xl": size === "base",
             "max-w-6xl": size === "lg",
+            "max-w-7xl": size === "xl",
             "max-w-full": size === "full",
           },
           className,

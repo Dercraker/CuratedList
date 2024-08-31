@@ -28,23 +28,7 @@ export const ListDetailContainer = async ({
       </div>
       <div className="mx-auto my-6">
         <Typography variant="lead" className="line-clamp-5 px-16">
-          Deserunt est mollit cupidatat dolore cupidatat. Deserunt est mollit
-          cupidatat dolore cupidatat. Deserunt est mollit cupidatat dolore
-          cupidatat. Deserunt est mollit cupidatat dolore cupidatat. Deserunt
-          est mollit cupidatat dolore cupidatat. Deserunt est mollit cupidatat
-          dolore cupidatat. Deserunt est mollit cupidatat dolore cupidatat.
-          Deserunt est mollit cupidatat dolore cupidatat. Deserunt est mollit
-          cupidatat dolore Deserunt est mollit cupidatat dolore cupidatat.
-          Deserunt est mollit cupidatat dolore cupidatat. Deserunt est mollit
-          cupidatat dolore cupidatat. Deserunt est mollit cupidatat dolore
-          cupidatat. Deserunt est mollit cupidatat dolore cupidatat. Deserunt
-          est mollit cupidatat dolore cupidatat. Deserunt est mollit cupidatat
-          dolore cupidatat. Deserunt est mollit cupidatat dolore cupidatat.
-          Deserunt est mollit cupidatat dolore cupidatat. Deserunt est mollit
-          cupidatat dolore cupidatat. Deserunt est mollit cupidatat dolore
-          cupidatat. Deserunt est mollit cupidatat dolore cupidatat. Deserunt
-          est mollit cupidatat dolore cupidatat. Deserunt est mollit cupidatat
-          dolore cupidatat. Deserunt est mollit cupidatat dolore cupidatat.
+          {description}
         </Typography>
       </div>
       <div className="flex flex-wrap items-center justify-evenly">

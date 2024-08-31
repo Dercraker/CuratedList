@@ -47,6 +47,7 @@
     "@t3-oss/env-nextjs": "^0.11.0",
     "@tanstack/react-query": "^5.51.11",
     "@tanstack/react-query-devtools": "^5.53.1",
+    "@vercel/og": "^0.6.2",
     "ajv": "^8.17.1",
     "canvas-confetti": "^1.9.3",
     "class-variance-authority": "^0.7.0",

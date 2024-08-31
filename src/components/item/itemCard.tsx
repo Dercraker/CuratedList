@@ -1,6 +1,7 @@
 import { ItemSchema } from "@/features/item/itemSchema";
 import { UserVotesSchema } from "@/features/vote/userVote.schema";
 import { cn } from "@/lib/utils";
+import { Suspense } from "react";
 import {
   Card,
   CardContent,
@@ -9,6 +10,7 @@ import {
   CardTitle,
 } from "../ui/card";
 import { DisplayOG } from "./DisplayOG";
+import { DisplayOGLoader } from "./DisplayOG.loader";
 import { VoteCounter } from "./voteCounter";
 
 export type ItemCardProps = {
@@ -32,11 +34,13 @@ export const ItemCard = ({
       </CardHeader>
 
       <CardContent className="flex items-center gap-4 max-sm:mr-9">
-        <DisplayOG url="https://tailwindcss.com" />
-        <VoteCounter
-          className="ml-auto"
-          userVotes={UserVotesSchema.parse(userVotes)}
-        />
+        <Suspense fallback={<DisplayOGLoader />}>
+          <DisplayOG url="https://tailwindcss.com" />
+          <VoteCounter
+            className="ml-auto"
+            userVotes={UserVotesSchema.parse(userVotes)}
+          />
+        </Suspense>
       </CardContent>
     </Card>
   );

@@ -1,14 +1,17 @@
-import { PaginationContainer } from "@/components/navigation/paginationContainer";
+import { PaginationComponent } from "@/components/navigation/paginationContainer";
 import { LINKS } from "@/features/navigation/NavigationLinks";
 import type { PageParams } from "@/types/next";
 import { AdminListContainer } from "./_components/AdminListContainer";
 
 const RoutePage = async (props: PageParams<{}>) => {
   return (
-    <>
+    <div>
       <AdminListContainer />
-      <PaginationContainer baseUrl={LINKS.Dashboard.Lists.href} total={18} />
-    </>
+      <PaginationComponent
+        baseUri={LINKS.Dashboard.Lists.href}
+        itemCount={90}
+      />
+    </div>
   );
 };
 

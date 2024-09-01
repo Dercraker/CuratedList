@@ -1,5 +1,4 @@
 import { ItemSchema } from "@/features/item/itemSchema";
-import { UserVotesSchema } from "@/features/vote/userVote.schema";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { Suspense } from "react";
@@ -45,7 +44,7 @@ export const ItemCard = ({
 
       <CardContent className="flex items-center gap-4 max-sm:mr-9">
         <Suspense fallback={<DisplayOGLoader />}>
-          <DisplayOG url="https://tailwindcss.com" />
+          <DisplayOG url={url} />
           <VoteCounter itemId={id} className="ml-auto" />
         </Suspense>
       </CardContent>

@@ -46,6 +46,7 @@ export const VoteCounter = ({ className, itemId }: VoteCounterProps) => {
 
   const { data: isVoted } = useQuery({
     enabled: !!data && status === "authenticated" && !!data.user.id,
+    staleTime: 0,
     queryKey: KeyItemFactory.isVoted(data?.user.id as string, itemId),
     queryFn: async () => {
       const result = await IsVoteAction({ itemId });
@@ -79,7 +80,7 @@ export const VoteCounter = ({ className, itemId }: VoteCounterProps) => {
       if (result?.serverError)
         return toast.error("An error occurred. Please try again later");
 
-      queryClient.invalidateQueries({
+      queryClient.resetQueries({
         queryKey: KeyItemFactory.isVoted(data?.user.id as string, itemId),
       });
       queryClient.invalidateQueries({
@@ -101,9 +102,9 @@ export const VoteCounter = ({ className, itemId }: VoteCounterProps) => {
 
   if (isVoted === true)
     return (
-      <div className={cn("flex w-fit flex-col items-center", className)}>
+      <div className={cn("flex w-fit flex-col items-center ", className)}>
         <ArrowUpCircle
-          className="size-10 cursor-pointer text-primary"
+          className="size-10 cursor-pointer text-primary hover:text-white"
           onClick={() => RemoveVote()}
         />
         <Typography variant="h3" className="select-none">
@@ -127,7 +128,7 @@ export const VoteCounter = ({ className, itemId }: VoteCounterProps) => {
           {voteResult > 0 ? `+${voteResult}` : voteResult}
         </Typography>
         <ArrowDownCircle
-          className="size-10 cursor-pointer text-red-400"
+          className="size-10 cursor-pointer text-red-400 hover:text-white"
           onClick={() => RemoveVote()}
         />
       </div>

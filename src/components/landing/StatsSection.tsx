@@ -1,7 +1,6 @@
 "use client";
 
-import { animate } from "framer-motion";
-import { useEffect, useRef } from "react";
+import { Counter } from "../ui/counter";
 import { SectionLayout } from "./SectionLayout";
 
 type StatProps = {
@@ -50,34 +49,4 @@ export function StatsSection() {
       </div>
     </SectionLayout>
   );
-}
-
-function Counter({
-  from,
-  to,
-  duration = 2,
-}: {
-  from: number;
-  to: number;
-  duration?: number;
-}) {
-  const nodeRef = useRef<HTMLSpanElement>(null);
-
-  useEffect(() => {
-    if (!nodeRef.current) return;
-    const node = nodeRef.current;
-
-    const controls = animate(from, to, {
-      duration,
-      ease: "easeInOut",
-
-      onUpdate(value) {
-        node.textContent = value.toFixed(2);
-      },
-    });
-
-    return () => controls.stop();
-  }, [from, to, duration]);
-
-  return <span ref={nodeRef}>{from}</span>;
 }

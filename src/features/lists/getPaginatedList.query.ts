@@ -3,8 +3,11 @@ import type { Prisma } from "@prisma/client";
 import { z } from "zod";
 
 export const GetPaginatedListQuerySchema = z.object({
-  take: z.number(),
-  pageParam: z.number(),
+  take: z.number().default(18).optional(),
+  skip: z.number(),
+
+  userId: z.string().optional(),
+  deleted: z.boolean().default(false).optional(),
 });
 
 export type GetPaginatedListQuerySchema = z.infer<
@@ -13,14 +16,17 @@ export type GetPaginatedListQuerySchema = z.infer<
 
 export const GetPaginatedListQuery = async ({
   take,
-  pageParam,
+  skip,
+  userId,
+  deleted,
 }: GetPaginatedListQuerySchema) => {
   const lists = await prisma.list.findMany({
     where: {
-      deletedAt: null,
+      deletedAt: deleted ? { not: null } : null,
+      ...(userId ? { creatorId: userId } : {}),
     },
     take,
-    skip: pageParam,
+    skip,
     select: {
       id: true,
       title: true,

@@ -2,41 +2,19 @@
 
 import { Separator } from "@/components/ui/separator";
 import { Typography } from "@/components/ui/typography";
+import {
+  NavigationLinkGroup,
+  StaticNavigationLinkSchema,
+} from "@/features/navigation/navigation.type";
+import { useCurrentPath } from "@/hooks/useCurrentPath";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { Fragment, cloneElement } from "react";
-import { DASHBOARD_LINKS } from "../../../app/(dashboard-layout)/dashboard-links";
-import type { NavigationLinkGroups } from "../../features/navigation/navigation.type";
-
-const useCurrentPath = (links: NavigationLinkGroups[]) => {
-  const currentPath = usePathname();
-  const pathSegments = currentPath.split("/");
-  const allDashboardLinks = links.flatMap((section) => section.links);
-
-  const linkMatchCounts = allDashboardLinks.map((link) => ({
-    url: link.url,
-    matchCount: link.url
-      .split("/")
-      .filter((segment, index) => segment === pathSegments[index]).length,
-  }));
-
-  const mostMatchingLink = linkMatchCounts.reduce(
-    (maxMatchLink, currentLink) =>
-      currentLink.matchCount > maxMatchLink.matchCount
-        ? currentLink
-        : maxMatchLink,
-    { url: "", matchCount: 0 },
-  );
-
-  return mostMatchingLink.url;
-};
-
+import { cloneElement, Fragment } from "react";
 export const DesktopVerticalMenu = ({
   links,
   className,
 }: {
-  links: NavigationLinkGroups[];
+  links: NavigationLinkGroup;
   className?: string;
 }) => {
   const currentPath = useCurrentPath(links);
@@ -51,32 +29,35 @@ export const DesktopVerticalMenu = ({
             </Typography>
           ) : null}
           <div className="flex flex-col gap-2">
-            {section.links.map((link) => {
-              const isCurrent = currentPath === link.url;
+            {section.links.map((link: StaticNavigationLinkSchema) => {
+              const isCurrent = currentPath === link.href;
 
               return (
                 <Link
-                  key={link.url}
+                  key={link.href}
                   className={cn(
-                    "flex h-8 items-center gap-2 rounded-md px-2 text-sm transition-colors",
+                    "group flex h-8 items-center gap-2 rounded-md px-2 text-sm transition-colors",
                     "hover:bg-card",
                     {
                       "bg-accent/50 hover:bg-accent/80": isCurrent,
                     },
                   )}
-                  href={link.url}
+                  href={link.href}
                 >
-                  {cloneElement(link.icon, {
-                    className: "h-4 w-4",
-                  })}
+                  {!!link.icon &&
+                    cloneElement(link.icon, {
+                      className: cn("group-hover:text-primary", {
+                        "text-primary": isCurrent,
+                      }),
+                    })}
                   <span className="flex h-8 items-center gap-2 rounded-md px-2 text-sm">
-                    {link.title}
+                    {link.label}
                   </span>
                 </Link>
               );
             })}
           </div>
-          {index < DASHBOARD_LINKS.length - 1 ? <Separator /> : null}
+          {index < links.length - 1 ? <Separator /> : null}
         </Fragment>
       ))}
     </nav>

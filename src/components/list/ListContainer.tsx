@@ -27,8 +27,7 @@ export const ListContainer = ({ className, ...props }: ListContainerProps) => {
     queryKey: KeyListFactory.infinity,
     queryFn: async ({ pageParam }) => {
       const result = await GetPaginatedListAction({
-        pageParam,
-        itemsPerPage: itemPerPage,
+        skip: pageParam,
       });
 
       if (!result || result.serverError || !result.data) {

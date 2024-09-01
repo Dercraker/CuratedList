@@ -1,6 +1,7 @@
 import { AuthButton } from "@/components/auth/AuthButton";
 import { Layout } from "@/components/page/layout";
 import { Separator } from "@/components/ui/separator";
+import { ACCOUNT_LINKS } from "@/features/navigation/NavigationLinks";
 import { ThemeToggle } from "@/features/theme/ThemeToggle";
 import { SiteConfig } from "@/site-config";
 import Image from "next/image";
@@ -8,7 +9,6 @@ import Link from "next/link";
 import type { PropsWithChildren } from "react";
 import { DesktopVerticalMenu } from "../../src/components/navigation/DesktopVerticalMenu";
 import { MobileDropdownMenu } from "../../src/components/navigation/MobileDropdownMenu";
-import { ACCOUNT_LINKS } from "./account-links";
 
 export const AccountNavigation = async (props: PropsWithChildren) => {
   return (

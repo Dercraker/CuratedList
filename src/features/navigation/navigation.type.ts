@@ -1,35 +1,39 @@
-import type { ReactElement } from "react";
 import React from "react";
 import { z } from "zod";
 
-type DashboardLinkItem = {
-  title: string;
-  icon: ReactElement;
-  url: string;
-};
-
-export type NavigationLinkGroups = {
-  title?: string;
-  links: DashboardLinkItem[];
-};
-
-export const NavigationLinkSchema = z.object({
+const StaticNavigationLinkSchema = z.object({
   label: z.string(),
-  href: z.union([
-    z.string(),
-    z.function().args(z.string()).returns(z.string()),
-  ]),
-  icon: z.custom<React.ReactNode>().optional(),
+  href: z.string(),
+  icon: z.custom<React.ReactElement>().optional(),
+  auth: z.boolean().optional(),
+});
+const DynamicNavigationLinkSchema = z.object({
+  label: z.string(),
+  href: z.function().args(z.string()).returns(z.string()),
+  icon: z.custom<React.ReactElement>().optional(),
   auth: z.boolean().optional(),
 });
 
-export type NavigationLinkType = z.infer<typeof NavigationLinkSchema>;
+const NavigationLinkSchema = z.union([
+  StaticNavigationLinkSchema,
+  DynamicNavigationLinkSchema,
+]);
 
-export const NavigationLinkWithGroupSchema = z.object({
-  title: z.string(),
-  links: z.array(NavigationLinkSchema),
-});
+const NavigationLinksSchema = z.record(NavigationLinkSchema);
 
-export type NavigationLinkWithGroupType = z.infer<
-  typeof NavigationLinkWithGroupSchema
+const NavigationLinkGroup = z.array(
+  z.object({
+    title: z.string().optional(),
+    links: z.array(StaticNavigationLinkSchema),
+  }),
+);
+
+const GenericLinkSchema = z.record(
+  z.union([NavigationLinkSchema, NavigationLinksSchema]),
+);
+
+export type StaticNavigationLinkSchema = z.infer<
+  typeof StaticNavigationLinkSchema
 >;
+export type GenericLinkSchema = z.infer<typeof GenericLinkSchema>;
+export type NavigationLinkGroup = z.infer<typeof NavigationLinkGroup>;

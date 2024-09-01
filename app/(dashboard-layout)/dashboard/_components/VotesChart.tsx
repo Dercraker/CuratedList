@@ -34,11 +34,16 @@ const SUBSCRIBERS: { date: string; amount: number }[] = [
   { date: "2023-05-31", amount: 16000 },
 ];
 
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
   TooltipChart,
   TooltipChartItem,
 } from "@/components/chart/TooltipChart";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { GetDailyUserVoteCountAction } from "@/features/dashboard/getDailyUserVoteCount.action";
+import { KeyDashboardFactory } from "@/features/dashboard/KeyDashboard.factory";
+import { useQuery } from "@tanstack/react-query";
+import { formatDate } from "date-fns";
+import { useSession } from "next-auth/react";
 import {
   Area,
   AreaChart,
@@ -49,19 +54,38 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
+import { toast } from "sonner";
 
-export const SubscribersChart = () => {
+export const VotesChart = () => {
+  const { status, data: sessionData } = useSession();
+  const { data: dailyVotes } = useQuery({
+    staleTime: 0,
+    queryKey: KeyDashboardFactory.dailyVotesCount(
+      sessionData?.user.id as string,
+    ),
+    queryFn: async () => {
+      const result = await GetDailyUserVoteCountAction();
+
+      if (!result || result.serverError || !result.data) {
+        toast.error("An error occurred when fetching all votes");
+        return [];
+      }
+      return result.data;
+    },
+    enabled: status === "authenticated" && !!sessionData.user.id,
+  });
+
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Subscriber Growth</CardTitle>
+        <CardTitle>Votes Growth</CardTitle>
       </CardHeader>
       <CardContent>
         <ResponsiveContainer width="100%" height={200}>
           <AreaChart
-            data={SUBSCRIBERS}
+            data={dailyVotes}
             margin={{ top: 0, right: 20, bottom: 0, left: 20 }}
-            title="Subscriber growth"
+            title="Votes growth"
           >
             <CartesianGrid
               strokeDasharray="5 5"
@@ -93,7 +117,7 @@ export const SubscribersChart = () => {
               fontSize={10}
               tickLine={false}
               axisLine={false}
-              interval={5}
+              interval={3}
             />
             <YAxis
               stroke="hsl(var(--muted-foreground) / 0.5)"
@@ -110,11 +134,11 @@ export const SubscribersChart = () => {
                   return (
                     <TooltipChart>
                       <TooltipChartItem label="Amount">
-                        {Intl.NumberFormat().format(payload[0].payload.value)}
+                        {payload[0].payload.amount}
                       </TooltipChartItem>
 
                       <TooltipChartItem label="Date">
-                        {new Date(payload[0].payload.date).toLocaleDateString()}
+                        {formatDate(payload[0].payload.date, "yyyy/MM/dd")}
                       </TooltipChartItem>
                     </TooltipChart>
                   );

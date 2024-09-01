@@ -10,17 +10,20 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Typography } from "@/components/ui/typography";
+import {
+  NavigationLinkGroup,
+  StaticNavigationLinkSchema,
+} from "@/features/navigation/navigation.type";
+import { DASHBOARD_LINKS } from "@/features/navigation/NavigationLinks";
 import { Menu, X } from "lucide-react";
 import Link from "next/link";
-import { Fragment, cloneElement, useState } from "react";
-import { DASHBOARD_LINKS } from "../../../app/(dashboard-layout)/dashboard-links";
-import type { NavigationLinkGroups } from "../../features/navigation/navigation.type";
+import { cloneElement, Fragment, useState } from "react";
 
 export const MobileDropdownMenu = ({
   links,
   className,
 }: {
-  links: NavigationLinkGroups[];
+  links: NavigationLinkGroup;
   className?: string;
 }) => {
   const [open, setOpen] = useState(false);
@@ -45,19 +48,20 @@ export const MobileDropdownMenu = ({
                 {section.title}
               </DropdownMenuLabel>
             ) : null}
-            {section.links.map((link) => (
-              <DropdownMenuItem key={link.url} asChild>
+            {section.links.map((link: StaticNavigationLinkSchema) => (
+              <DropdownMenuItem key={link.href} asChild>
                 <Typography
                   as={Link}
                   variant="large"
                   className="flex items-center gap-2 text-base"
-                  href={link.url}
+                  href={link.href}
                   onClick={() => setOpen(false)}
                 >
-                  {cloneElement(link.icon, {
-                    className: "h-4 w-4",
-                  })}
-                  <span>{link.title}</span>
+                  {!!link.icon &&
+                    cloneElement(link.icon, {
+                      className: "group-hover:text-primary",
+                    })}
+                  <span>{link.label}</span>
                 </Typography>
               </DropdownMenuItem>
             ))}

@@ -128,6 +128,11 @@ const main = async () => {
           userId: user.id,
           itemId: item.id,
           isUpVote: faker.datatype.boolean(),
+          createdAt: faker.datatype.boolean({ probability: 0.25 })
+            ? faker.date.anytime()
+            : faker.datatype.boolean()
+              ? faker.date.soon({ days: 30 })
+              : faker.date.soon({ days: 30 }),
         };
       }),
     });
@@ -144,6 +149,51 @@ const main = async () => {
         };
       }),
     });
+  }
+
+  const dercrakerUser = await prisma.user.findFirst({
+    where: {
+      name: "Dercraker",
+    },
+  });
+
+  if (dercrakerUser) {
+    const userItems = await prisma.item.findMany({
+      where: { creatorId: dercrakerUser.id },
+    });
+    const randomItems = faker.helpers.arrayElements(userItems, {
+      min: userItems.length / 50,
+      max: userItems.length,
+    });
+
+    randomUser = faker.helpers.arrayElements(users);
+
+    for (const user of randomUser) {
+      for (const item of randomItems) {
+        const allReadyVote = await prisma.voteOnItem.findFirst({
+          where: {
+            userId: user.id,
+            itemId: item.id,
+          },
+        });
+
+        if (allReadyVote)
+          await prisma.voteOnItem.delete({ where: { id: allReadyVote.id } });
+
+        await prisma.voteOnItem.create({
+          data: {
+            itemId: item.id,
+            userId: user.id,
+            isUpVote: faker.datatype.boolean(),
+            createdAt: faker.datatype.boolean({ probability: 0.25 })
+              ? faker.date.anytime()
+              : faker.datatype.boolean()
+                ? faker.date.soon({ days: 30 })
+                : faker.date.soon({ days: 30 }),
+          },
+        });
+      }
+    }
   }
 };
 

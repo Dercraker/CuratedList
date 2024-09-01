@@ -5,6 +5,8 @@ export const UserVoteSchema = z.object({
   itemId: z.string(),
   userId: z.string(),
   isUpVote: z.boolean(),
+  createdAt: z.date().optional(),
+  updateAt: z.date().optional(),
 });
 
 export const UserVotesSchema = z.array(UserVoteSchema);

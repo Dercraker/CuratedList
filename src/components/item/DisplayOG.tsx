@@ -8,7 +8,7 @@ export type DisplayOGProps = {
 
 export const DisplayOG = async ({ url }: DisplayOGProps) => {
   try {
-    const { error, result } = await ogs({ url });
+    const { result } = await ogs({ url });
 
     if (!result.ogImage?.length)
       return (

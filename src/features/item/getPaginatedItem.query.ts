@@ -3,7 +3,7 @@ import type { Prisma } from "@prisma/client";
 import { z } from "zod";
 
 export const GetPaginatedItemQuerySchema = z.object({
-  take: z.number().default(18).optional(),
+  take: z.number().default(18),
   skip: z.number(),
 
   userId: z.string().optional(),

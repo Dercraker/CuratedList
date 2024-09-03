@@ -53,7 +53,6 @@ export const GetDailyUserVoteCountQuery = async ({
     };
   });
 
-  console.log("🚀 ~ votesEvolution:", votesEvolution);
   return votesEvolution;
 };
 

@@ -24,7 +24,6 @@ const RoutePage = async ({ searchParams }: PageParams<{}>) => {
   });
 
   const totalVotes = await GetUserVotedItemsCountQuery({ userId: user.id });
-  console.log("🚀 ~ RoutePage ~ totalVotes:", totalVotes);
   return (
     <>
       <div className="flex h-fit flex-wrap justify-center">

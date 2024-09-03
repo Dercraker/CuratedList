@@ -70,7 +70,6 @@ export const GetPaginatedListQuery = async ({
       },
     },
   });
-  console.log("🚀 ~ lists:", lists);
 
   return lists;
 };

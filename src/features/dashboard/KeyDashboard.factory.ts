@@ -1,6 +1,10 @@
 export const KeyDashboardFactory = {
   all: ["Dashboard"],
-  getVotes: (userId: string) => [...KeyDashboardFactory.all, "Votes"],
+  getVotes: (userId: string) => [
+    ...KeyDashboardFactory.all,
+    { userId },
+    "Votes",
+  ],
   dailyVotes: (userId: string) => [
     ...KeyDashboardFactory.getVotes(userId),
     "Daily",

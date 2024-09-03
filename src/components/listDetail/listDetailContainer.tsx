@@ -12,7 +12,7 @@ export type ListDetailContainerProps = {
 };
 
 export const ListDetailContainer = async ({
-  list: { items, tags, createdAt, description, id, title, creator, creatorId },
+  list: { items, tags, createdAt, description, id, title, creator },
 }: ListDetailContainerProps) => {
   const user = await auth();
 

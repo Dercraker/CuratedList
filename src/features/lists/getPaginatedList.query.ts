@@ -8,6 +8,7 @@ export const GetPaginatedListQuerySchema = z.object({
 
   userId: z.string().optional(),
   deleted: z.boolean().default(false).optional(),
+  bookmarksOnly: z.boolean().default(false).optional(),
 });
 
 export type GetPaginatedListQuerySchema = z.infer<
@@ -19,11 +20,21 @@ export const GetPaginatedListQuery = async ({
   skip,
   userId,
   deleted,
+  bookmarksOnly,
 }: GetPaginatedListQuerySchema) => {
   const lists = await prisma.list.findMany({
     where: {
       deletedAt: deleted ? { not: null } : null,
-      ...(userId ? { creatorId: userId } : {}),
+      ...(userId && !bookmarksOnly ? { creatorId: userId } : {}),
+      ...(bookmarksOnly
+        ? {
+            userBookmarks: {
+              some: {
+                userId,
+              },
+            },
+          }
+        : {}),
     },
     take,
     skip,
@@ -59,6 +70,7 @@ export const GetPaginatedListQuery = async ({
       },
     },
   });
+  console.log("🚀 ~ lists:", lists);
 
   return lists;
 };

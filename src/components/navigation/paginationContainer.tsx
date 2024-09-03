@@ -23,7 +23,10 @@ export const PaginationComponent = ({
   baseUri,
   className,
 }: PaginationComponentProps) => {
-  const [page, setPage] = useQueryState("page", parsers.page);
+  const [page, setPage] = useQueryState(
+    "page",
+    parsers.page.withOptions({ shallow: false }),
+  );
   const [size] = useQueryState("size", parsers.size);
 
   const generatePaginationLinks = () => {

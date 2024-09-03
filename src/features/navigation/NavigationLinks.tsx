@@ -1,5 +1,7 @@
 import {
   AlertCircle,
+  ArrowUpDown,
+  Bookmark,
   Coins,
   Mail,
   Scroll,
@@ -32,6 +34,16 @@ export const LINKS = {
       href: "/dashboard/items",
       icon: <ScrollText />,
     },
+    Votes: {
+      label: "My votes",
+      href: "/dashboard/votes",
+      icon: <ArrowUpDown />,
+    },
+    Bookmarks: {
+      label: "My Bookmarks",
+      href: "/dashboard/bookmarks",
+      icon: <Bookmark />,
+    },
   },
   Account: {
     Profile: {
@@ -63,7 +75,12 @@ export const DASHBOARD_LINKS = [
   },
   {
     title: "Content",
-    links: [LINKS.Dashboard.Lists, LINKS.Dashboard.Items],
+    links: [
+      LINKS.Dashboard.Lists,
+      LINKS.Dashboard.Items,
+      LINKS.Dashboard.Votes,
+      LINKS.Dashboard.Bookmarks,
+    ],
   },
 ] satisfies NavigationLinkGroup;
 

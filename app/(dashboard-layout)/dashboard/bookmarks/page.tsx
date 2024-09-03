@@ -1,6 +1,6 @@
 import { ListCardItem } from "@/components/list/ListCardItem";
 import { PaginationComponent } from "@/components/navigation/paginationContainer";
-import { GetAllUserListCountQuery } from "@/features/dashboard/getAllUserListCount.query";
+import { GetAllUserBookmarkListCountQuery } from "@/features/lists/getAllUserBookmarkListCount";
 import {
   GetPaginatedListQuery,
   PaginatedListItem,
@@ -18,9 +18,12 @@ const RoutePage = async ({ searchParams }: PageParams<{}>) => {
     skip: (page - 1) * size,
     take: size,
     userId: user.id,
+    bookmarksOnly: true,
   });
 
-  const totalLists = await GetAllUserListCountQuery({ userId: user.id });
+  const totalLists = await GetAllUserBookmarkListCountQuery({
+    userId: user.id,
+  });
 
   return (
     <>
@@ -31,7 +34,7 @@ const RoutePage = async ({ searchParams }: PageParams<{}>) => {
       </div>
       <PaginationComponent
         baseUri={LINKS.Dashboard.Lists.href}
-        itemCount={totalLists.totalListCount}
+        itemCount={totalLists}
       />
     </>
   );

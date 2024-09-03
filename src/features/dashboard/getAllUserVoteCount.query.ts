@@ -5,6 +5,7 @@ import { z } from "zod";
 
 export const GetAllUserVoteCountQuerySchema = z.object({
   userId: z.string(),
+  withVote: z.boolean().default(false).optional(),
 });
 
 export type GetAllUserVoteCountQuerySchema = z.infer<

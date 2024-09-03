@@ -38,10 +38,31 @@ export const GetListQuery = async ({ listId }: GetListQuerySchema) => {
           title: true,
           description: true,
           url: true,
+          userVotes: {
+            select: {
+              id: true,
+              isUpVote: true,
+            },
+          },
         },
       },
     },
   });
+
+  const sortedItems = items
+    .map((item) => {
+      const upVotes = item.item.userVotes.filter(
+        (vote) => vote.isUpVote,
+      ).length;
+      const downVotes = item.item.userVotes.filter(
+        (vote) => !vote.isUpVote,
+      ).length;
+      return {
+        ...item,
+        voteScore: upVotes - downVotes, // Calculer le score de vote
+      };
+    })
+    .sort((a, b) => b.voteScore - a.voteScore); // Trier par score de vote décroissant
 
   const tags = await prisma.tagOnList.findMany({
     where: {
@@ -60,7 +81,7 @@ export const GetListQuery = async ({ listId }: GetListQuerySchema) => {
 
   return {
     ...list,
-    items: items.map((i) => i.item),
+    items: sortedItems.map((i) => i.item),
     tags: tags.map((t) => t.tag),
   };
 };
